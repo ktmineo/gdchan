@@ -12,7 +12,7 @@ var gdMember = [
 					"@西嶋千晴_chiharu.nishijima"
 				];
 
-	robot.respond(/つー/i, function (msg) {
+	robot.respond(/レビューして/i, function (msg) {
 			for(var i = gdMember.length-1; i >= 0; i--) {
 				var rand = Math.floor( Math.random() * ( i + 1 ) );
 				[gdMember[i], gdMember[rand]] = [gdMember[rand], gdMember[i]]
