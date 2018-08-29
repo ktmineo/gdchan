@@ -1,15 +1,15 @@
 module.exports = function (robot) {
 var gdMember = [
-					"@yuko.baba",
-					"@emi.oyamada",
-					"@kyohei.yamada",
-					"@misakic",
-					"@misato.nishijima",
-					"@mizuki.kamimura",
-					"@seira.ozeki",
-					"@tetsuya.sato",
-					"@yoshimi.nakamura",
-					"@西嶋千晴_chiharu.nishijima"
+					"111",
+					"222",
+					"333",
+					"444",
+					"555",
+					"666",
+					"777",
+					"888",
+					"999",
+					"000"
 				];
 
 	robot.respond(/レビューして/i, function (msg) {
