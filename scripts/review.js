@@ -1,7 +1,7 @@
 //import request from 'request';
 
 module.exports = (robot) => {
-  robot.respond(/.*(random|抽選|選ぶ).*/, (msg) => {
+  robot.respond(/.*(レビューして).*/, (msg) => {
     const url = 'https://slack.com/api/channels.list?token=' + process.env.HUBOT_SLACK_TOKEN;
 
     // チャンネル一覧を取得
