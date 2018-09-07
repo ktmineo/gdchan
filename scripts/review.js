@@ -1,24 +1,35 @@
+import request from 'request';
+
 module.exports = function (robot) {
-var gdMember = [
-					"@yuko.baba",
-					"@emi.oyamada",
-					"@kyohei.yamada",
-					"@misakic",
-					"@misato.nishijima",
-					"@mizuki.kamimura",
-					"@seira.ozeki",
-					"@tetsuya.sato",
-					"@yoshimi.nakamura",
-					"@西嶋千晴_chiharu.nishijima"
-				];
-
 	robot.respond(/レビューして/i, function (msg) {
-			for(var i = gdMember.length-1; i >= 0; i--) {
-				var rand = Math.floor( Math.random() * ( i + 1 ) );
-				[gdMember[i], gdMember[rand]] = [gdMember[rand], gdMember[i]]
-			}
-			choice = gdMember.slice(0,2);
-			msg.send(choice);
-	});
+		const url = 'https://slack.com/api/channels.list?token=' + process.env.HUBOT_SLACK_TOKEN;
 
-}
+		//ch 一覧取得
+		request(url, (err, res, body){
+			const channel = findChannel(JSON.parse(body).channels, msg.message.room);
+			console.log('get ch');
+			console.log(channel);
+
+			//bot以外で抽選
+			const botId = robot.adapter.self.id;
+			const filterdMembers = channel.members.filter ((member) {
+				return member !== botId;
+			});
+			consol.log(filterdMembers);
+
+			const member = msg.random(filterdMembers);
+
+			//送信
+			msg.send('<@' + member + '> レビューお願いします。 :tea:');
+		});
+	});
+｝
+
+function findChannel(channels, targetName) {
+	for (const channel of channels) {
+		if (channel.name === targetName) {
+			return channel;
+		}
+	}
+	return null;
+};
