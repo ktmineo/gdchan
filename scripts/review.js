@@ -1,7 +1,7 @@
 import request from 'request';
 
 module.exports = function (robot) {
-	robot.respond(/レビューして/i, function (msg) {
+	robot.respond(/レビュー/i, function (msg) {
 		const url = 'https://slack.com/api/channels.list?token=' + process.env.HUBOT_SLACK_TOKEN;
 
 		//ch 一覧取得
