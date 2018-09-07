@@ -1,4 +1,4 @@
-import request from 'request';
+//import request from 'request';
 
 module.exports = (robot) => {
   robot.respond(/.*(random|抽選|選ぶ).*/, (msg) => {
